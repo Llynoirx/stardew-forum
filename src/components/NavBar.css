@@ -1,32 +1,28 @@
-.sidebar {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #923434; 
-    padding: 20px; 
-    color: white; 
-    font-size: 20px; 
+.navbar {
+  height: 5%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #64B668;
+  padding: 15px 10px 15px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  border: 2px solid black;
 }
 
-ul {
-    list-style: none; 
-    padding: 0;
+.nav-item {
+  display:flex;
+  flex-direction: row;
+  right:0;
+  position:fixed;
+  margin-right:2%;
+  gap: 10px;
 }
 
-li {
-    padding: 10px; 
-}
-
-li a {
-    color: white; 
-}
-
-li:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-li a:hover {
-    color: red; 
+.navtext {
+  color: #efefef;
+  font-size: 30px;
 }
