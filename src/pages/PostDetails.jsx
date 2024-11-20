@@ -22,7 +22,7 @@ function PostDetails() {
       }
       setLoading(false); 
     };
-    fetchCrewmate();
+    fetchPost();
   }, [id]);
 
   const handleChange = (e) => {
@@ -57,12 +57,12 @@ function PostDetails() {
     setIsEditing(!isEditing);
   };
 
-  if (loading) return <p>Loading crewmate...</p>;
+  if (loading) return <p>Loading post...</p>;
 
   return (
     <div>
       <NavBar />
-      <h1>{isEditing ? 'Edit Crewmate' : 'Crewmate Details'}</h1>
+      <h1>{isEditing ? 'Edit Post' : 'Post Details'}</h1>
       <div className="container">
         {/* Edit Mode Form */}
       {isEditing ? (
@@ -75,7 +75,7 @@ function PostDetails() {
           <input type="button" value="Cancel" onClick={handleEditToggle} className="cancel-button" />
         </form>
       ) : (
-        // View Mode: Display crewmate details
+        // View Mode: Display Post details
         <div>
           <h2>Post: {fields.name}</h2>
           <p><strong>Speed:</strong> {fields.speed} mph</p>

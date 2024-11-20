@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { supabase } from '../client';
 import NavBar from '../components/NavBar';
 import { useNavigate } from 'react-router-dom'; 
-// import { NameInput, SpeedInput, ColorSelection } from '../Components/Form'; 
-// import './CreateCrewmate.css';
+import { TitleInput, ContentInput } from '../components/Form'; 
 
 function CreatePost() {
-  const [fields, setFields] = useState({ name: '', speed: '', color: '' });
+  const [fields, setFields] = useState({ title: '', content: ''});
   const navigate = useNavigate(); 
 
   const handleChange = (e) => {
@@ -20,33 +19,32 @@ function CreatePost() {
   const makePost = async (e) => {
     e.preventDefault();
 
-    if (!fields.name || !fields.speed || !fields.color) {
+    if (!fields.title || !fields.content ) {
       alert('Please fill in all fields');
       return;
     }
 
     const { error } = await supabase
       .from('Posts')
-      .insert([{ name: fields.name, speed: fields.speed, color: fields.color }])
+      .insert([{ title: fields.title, content: fields.content }])
       .select();
 
     if (error) {
-      alert("Couldn't create crewmate; please try again");
+      alert("Couldn't create post; please try again");
     } else {
-      alert('Crewmate successfully created');
-      navigate('/home-feed');
+      alert('Post successfully created');
+      navigate('/');
     }
   };
 
   return (
     <div>
-      <Sidebar />
-      <h1>Create a New Crewmate</h1>
+      <NavBar />
+      <h1>Create a New Post</h1>
       <div className="container">
         <form className="form" onSubmit={makePost}>
-        <NameInput fields={fields} handleChange={handleChange} />
-        <SpeedInput fields={fields} handleChange={handleChange} />
-        <ColorSelection fields={fields} handleChange={handleChange} />
+        <TitleInput fields={fields} handleChange={handleChange} />
+        <ContentInput fields={fields} handleChange={handleChange} />
         <input type="submit" value="Submit" />
         </form>
       </div>

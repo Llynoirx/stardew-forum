@@ -10,7 +10,7 @@ const Navbar = () => {
             <div className="navtext"><img src={stardewlogo} height="30px"/></div>
             <div className="nav-item">
                 <Link to="/"><p>Home</p></Link>
-                <Link to="/create"><p>Create Post</p></Link>
+                <Link to="/create-post"><p>Create Post</p></Link>
             </div>
         </div>
     )
