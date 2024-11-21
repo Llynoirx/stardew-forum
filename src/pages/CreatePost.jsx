@@ -1,55 +1,63 @@
-import React, { useState } from 'react';
-import { supabase } from '../client';
-import NavBar from '../components/NavBar';
-import { useNavigate } from 'react-router-dom'; 
-import { TitleInput, ContentInput } from '../components/Form'; 
+import React from 'react';
+import './CreatePost.css'
+import { useState } from 'react';
+import { supabase } from '../client'
+import { Link } from 'react-router-dom';
 
-function CreatePost() {
-  const [fields, setFields] = useState({ title: '', content: ''});
-  const navigate = useNavigate(); 
+const CreatePost = () => {
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFields((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+    const [post, setPost] = useState({title: "", content:""})
 
-  const makePost = async (e) => {
-    e.preventDefault();
+    const createPost = async (event) => {
+        event.preventDefault();
+      
+        await supabase
+          .from('Posts')
+          .insert({title: post.title, content: post.content})
+          .select();
+      
+        window.location = "/";
+      }
 
-    if (!fields.title || !fields.content ) {
-      alert('Please fill in all fields');
-      return;
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setPost( (prev) => {
+            return {
+                ...prev,
+                [name]:value,
+            }
+        })
     }
 
-    const { error } = await supabase
-      .from('Posts')
-      .insert([{ title: fields.title, content: fields.content }])
-      .select();
+    return (
+        <div>
+            <form>
 
-    if (error) {
-      alert("Couldn't create post; please try again");
-    } else {
-      alert('Post successfully created');
-      navigate('/');
-    }
-  };
+                <input 
+                    className="titleText"
+                    autoComplete="off" 
+                    type="text" 
+                    id="title" 
+                    name="title" 
+                    placeholder="Enter title of post" 
+                    onChange={handleChange} /><br />
+                <br/>
 
-  return (
-    <div>
-      <NavBar />
-      <h1>Create a New Post</h1>
-      <div className="container">
-        <form className="form" onSubmit={makePost}>
-        <TitleInput fields={fields} handleChange={handleChange} />
-        <ContentInput fields={fields} handleChange={handleChange} />
-        <input type="submit" value="Submit" />
-        </form>
-      </div>
-    </div>
-  );
+                <textarea 
+                    className="contentText"
+                    autoComplete="off" 
+                    id="content" 
+                    name="content" 
+                    rows="6"
+                    placeholder="Enter content of post" 
+                    onChange={handleChange} /><br />
+                <br/>
+
+                <input type="submit" value="Submit" onClick={createPost} />
+                <Link to="/"><button className="cancelButton">Cancel</button></Link>
+            </form>
+        </div>
+    )
 }
 
-export default CreatePost;
+export default CreatePost

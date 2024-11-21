@@ -1,0 +1,66 @@
+.postSection {
+    border: 2px solid #B76C42;
+    background-color: #F5D59B;
+    border-radius: 30px;
+    padding: 15px;
+    margin-top: 40px;
+    width: 800px;
+}
+
+.commentSection {
+    background-color: #B76C42;
+    padding: 15px;  
+    padding-top:5px;
+    margin-bottom: 2%;
+    border-radius: 5px;
+}
+
+.commentInput {
+    background-color: white;
+    border-radius: 5px;
+    height: 25%;
+    width: 95%;
+    font-size: 15px;
+}
+
+ul li {
+    text-align:left;
+    list-style: "- ";
+}
+
+ul {
+    margin: auto;
+    padding-left: 3%;
+}
+
+.upvote-icon {
+    width: 20px;
+    height: 20px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+    transition: transform .2s;
+}
+
+.upvote-icon:hover {
+    transform: scale(1.5);
+}
+
+.upvote-icon:active {
+    transform: scale(0.8);
+}
+
+.likes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h4 {
+    margin:0;
+    /* text-align: left; */
+}
+
+.back {
+    background-color: #4A9038;
+}

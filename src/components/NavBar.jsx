@@ -7,10 +7,10 @@ const Navbar = () => {
 
     return (
         <div className="navbar">
-            <div className="navtext"><img src={stardewlogo} height="30px"/></div>
+            <img src={stardewlogo} height="100px"/>
             <div className="nav-item">
                 <Link to="/"><p>Home</p></Link>
-                <Link to="/create-post"><p>Create Post</p></Link>
+                <Link to="/create"><p>Create Post</p></Link>
             </div>
         </div>
     )

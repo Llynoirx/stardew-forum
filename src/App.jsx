@@ -1,8 +1,10 @@
+import NavBar from './components/NavBar.jsx';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CreatePost from './pages/CreatePost.jsx';
-import HomeFeed from './pages/HomeFeed.jsx';
-import PostDetails from './pages/PostDetails.jsx';
-import NotFound from './pages/NotFound.jsx';
+import CreatePost from './pages/CreatePost';
+import EditPost from './pages/EditPost';
+import HomeFeed from './pages/HomeFeed';
+import PostInfo from './pages/PostInfo';
+import NotFound from './pages/NotFound';
 
 function App() {
 
@@ -10,10 +12,12 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<HomeFeed/>} />
-      <Route path="/create-post" element={<CreatePost/>} /> 
-      <Route path="/post/:id" element={<PostDetails/>} />
+      <Route path="/create" element={<CreatePost/>} /> 
+      <Route path="/post/:id" element={<PostInfo/>} />
+      <Route path="/edit/:id" element={<EditPost/>} />
       <Route path="*" element={ <NotFound /> }/>
     </Routes>
+    <NavBar />
   </BrowserRouter>
   )
 }

@@ -1,0 +1,21 @@
+.HomeFeed {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.searchBar {
+    color: black;
+    background-color: white;
+    border: px solid black;
+    margin-top: 50px;
+    width:600px;
+}
+
+.sort {
+    margin:5px;
+    margin-bottom:0px;
+    background-color: #64B668;
+    padding: 5px;
+}
