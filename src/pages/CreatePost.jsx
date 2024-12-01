@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CreatePost.css'
-import { useState } from 'react';
 import { supabase } from '../client'
 import { Link } from 'react-router-dom';
 
@@ -10,23 +9,29 @@ const CreatePost = () => {
 
     const createPost = async (event) => {
         event.preventDefault();
-      
-        await supabase
+
+        // Insert the new post with initial upvotes set to 0
+        const { error } = await supabase
           .from('Posts')
-          .insert({title: post.title, content: post.content})
-          .select();
-      
-        window.location = "/";
-      }
+          .insert({ 
+            title: post.title, 
+            content: post.content,
+            upvotes: 0  // Set initial upvotes to 0
+          });
+
+        if (error) {
+          console.error('Error inserting post:', error);
+        } else {
+          window.location = "/";  // Redirect to home after creating the post
+        }
+    }
 
     const handleChange = (event) => {
-        const {name, value} = event.target;
-        setPost( (prev) => {
-            return {
-                ...prev,
-                [name]:value,
-            }
-        })
+        const { name, value } = event.target;
+        setPost((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     }
 
     return (
@@ -40,7 +45,8 @@ const CreatePost = () => {
                     id="title" 
                     name="title" 
                     placeholder="Enter title of post" 
-                    onChange={handleChange} /><br />
+                    onChange={handleChange} 
+                /><br />
                 <br/>
 
                 <textarea 
@@ -50,7 +56,8 @@ const CreatePost = () => {
                     name="content" 
                     rows="6"
                     placeholder="Enter content of post" 
-                    onChange={handleChange} /><br />
+                    onChange={handleChange} 
+                /><br />
                 <br/>
 
                 <input type="submit" value="Submit" onClick={createPost} />
@@ -60,4 +67,4 @@ const CreatePost = () => {
     )
 }
 
-export default CreatePost
+export default CreatePost;
