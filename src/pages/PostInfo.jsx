@@ -11,7 +11,7 @@ const PostInfo = (props) => {
     const [posts, setPosts] = useState([]);
     const { id } = useParams();
     const [count, setCount] = useState(0);
-    const [newComments, setComments] = useState([]);
+    const [newComments, setComments] = useState([]); // Ensure comments are initialized as an array
     const [showPrompt, setShowPrompt] = useState(true);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const PostInfo = (props) => {
 
             setPosts(data);
             setCount(data.upvotes);
-            setComments(data.comments || []);  
+            setComments(Array.isArray(data.comments) ? data.comments : []);  // Ensure comments are an array
         };
         fetchPost();
     }, [id]);
@@ -42,13 +42,17 @@ const PostInfo = (props) => {
     };
 
     const addComment = async (newCom) => {
-        setComments([...newComments, newCom]);
+        // Add new comment only if it's a valid string
+        if (newCom.trim()) {
+            const updatedComments = [...newComments, newCom];
+            setComments(updatedComments);
 
-        const data = await supabase
-            .from('Posts')
-            .update({ comments: [...newComments, newCom] })
-            .eq('id', id);
-        setShowPrompt(false);
+            const data = await supabase
+                .from('Posts')
+                .update({ comments: updatedComments })
+                .eq('id', id);
+            setShowPrompt(false);
+        }
     };
 
     const submitComment = (e) => {
@@ -94,9 +98,11 @@ const PostInfo = (props) => {
                         )}
                         <div>
                             <ul>
-                                {newComments.map((comment, index) => (
-                                    <li key={index}>{comment}</li>
-                                ))}
+                                {Array.isArray(newComments) && newComments.length > 0 ? (
+                                    newComments.map((comment, index) => <li key={index}>{comment}</li>)
+                                ) : (
+                                    <li>No comments yet.</li>
+                                )}
                             </ul>
                             <input
                                 id="commentInput"

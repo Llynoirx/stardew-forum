@@ -1,4 +1,4 @@
-/* Apply white-space: pre-wrap to preserve line breaks */
+/* Keep everything as is, add the new .postLink style */
 .Post {
     backdrop-filter: blur(2px);
     border: 2px solid #B76C42;
@@ -33,6 +33,18 @@
 }
 
 .Post .content {
-    white-space: pre-wrap; 
-    word-wrap: break-word;  
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Style the entire post as a clickable link */
+.postLink {
+    text-decoration: none;
+    color: inherit; /* Make sure the text color matches the parent styling */
+    display: block;
+}
+
+.postLink:hover {
+    cursor: pointer;
+    opacity: 0.8; /* Slight opacity change for hover effect */
 }

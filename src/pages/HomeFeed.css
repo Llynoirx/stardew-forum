@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     margin: auto;
-    padding-top: 200px; /* Keeps content below the navbar */
+    padding-top: 150px; /* Keeps content below the navbar */
     padding-left: 350px; /* Adds padding to the left side */
     padding-right: 20px; /* Optional: adds some padding to the right */
     width: 100%; /* Ensures the container takes the full width */
