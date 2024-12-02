@@ -69,6 +69,17 @@ const PostInfo = (props) => {
     const currentTime = new Date();
     const diffHours = Math.round((currentTime - timestamp) / (1000 * 60 * 60));
 
+    // Helper function to render content with line breaks
+    const renderContentWithLineBreaks = (content) => {
+        if (!content) return null;
+        return content.split('\n').map((str, index) => (
+            <span key={index}>
+                {str}
+                <br />
+            </span>
+        ));
+    };
+
     return (
         <div>
             {posts && posts.id != null ? (
@@ -77,7 +88,9 @@ const PostInfo = (props) => {
                         <img className="moreButton" alt="edit button" src={more} />
                     </Link>
                     <h2>{posts.title}</h2>
-                    <p>{posts.content}</p>
+                    <div className="content">
+                        {renderContentWithLineBreaks(posts.content)} {/* Display content with line breaks */}
+                    </div>
                     <div className="likes">
                         <p>Posted {diffHours} hours ago</p>
                         <p style={{ display: 'flex', alignItems: 'center' }}>

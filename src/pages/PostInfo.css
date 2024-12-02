@@ -1,20 +1,25 @@
+/* Center the post section */
 .postSection {
     border: 2px solid #B76C42;
     background-color: #F5D59B;
     border-radius: 30px;
     padding: 15px;
     margin-top: 40px;
-    width: 800px;
+    width: 800px;          /* Adjust the width as per your preference */
+    margin-left: auto;     /* Center horizontally */
+    margin-right: auto;    /* Center horizontally */
 }
 
+/* Comment section styling */
 .commentSection {
     background-color: #B76C42;
-    padding: 15px;  
-    padding-top:5px;
+    padding: 15px;
+    padding-top: 5px;
     margin-bottom: 2%;
     border-radius: 5px;
 }
 
+/* Comment input field styling */
 .commentInput {
     background-color: white;
     border-radius: 5px;
@@ -23,8 +28,9 @@
     font-size: 15px;
 }
 
+/* List styling for comments */
 ul li {
-    text-align:left;
+    text-align: left;
     list-style: "- ";
 }
 
@@ -33,6 +39,7 @@ ul {
     padding-left: 3%;
 }
 
+/* Upvote button styling */
 .upvote-icon {
     width: 20px;
     height: 20px;
@@ -49,6 +56,7 @@ ul {
     transform: scale(0.8);
 }
 
+/* Likes container styling */
 .likes {
     display: flex;
     flex-direction: row;
@@ -56,11 +64,23 @@ ul {
     justify-content: space-between;
 }
 
+/* Heading style */
 h4 {
-    margin:0;
-    /* text-align: left; */
+    margin: 0;
 }
 
+/* Back button styling */
 .back {
     background-color: #4A9038;
+}
+
+/* Content styling to preserve line breaks */
+.content {
+    white-space: pre-wrap; /* Ensure white-space formatting is preserved */
+    word-wrap: break-word; /* Allow content to break at word boundaries */
+}
+
+/* Add overall padding to the page for spacing */
+body {
+    padding: 0 22%; /* Add padding to the left and right of the body for wider screens */
 }
