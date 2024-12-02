@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import junimo from '../assets/junimo-dance.gif'
 
 const LoadingPage = () =>  {
 
     return (
         <div>
-            <img src="../assets/junimo-dance.gif" className="logo"/>
+            <img src={junimo} className="logo"/>
             <p>Loading...</p>
         </div>
     )
