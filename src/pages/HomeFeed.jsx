@@ -9,7 +9,7 @@ const HomeFeed = (props) => {
     const [searchInput, setSearchInput] = useState("");
     const [filteredResults, setFilteredResults] = useState([]);
     const [sortedResults, setSortedResults] = useState([]);
-    const [loading, setLoading] = useState(true); // State to control loading screen
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -17,41 +17,52 @@ const HomeFeed = (props) => {
                 .from('Posts')
                 .select()
                 .order('created_at', { ascending: false });
-            
+
             setPosts(data);
             setSortedResults(data);
             setFilteredResults(data);
 
-            // Set a delay before hiding the loading screen
             setTimeout(() => {
                 setLoading(false); // Hide the loading screen after 3-5 seconds
-            }, 1500); // Set the desired delay (3000ms = 3 seconds)
+            }, 1500); // Set the desired delay (1500ms)
         };
 
         fetchPosts();
     }, []);
 
+    // Function to handle search
     const searchItems = (searchValue) => {
         setSearchInput(searchValue);
+        const results = sortedResults.filter(item =>
+            item.title.toLowerCase().includes(searchValue.toLowerCase())
+        );
+        setFilteredResults(results);
+    };
+
+    // Sort by Newest
+    const sortNewest = () => {
+        const sortedByNewest = [...posts].sort((a, b) => b.created_at.localeCompare(a.created_at));
+        setSortedResults(sortedByNewest);
+        applySearch(searchInput, sortedByNewest); // Reapply search after sorting
+    };
+
+    // Sort by Popularity (upvotes)
+    const sortPopular = () => {
+        const sortedByPopular = [...posts].sort((a, b) => b.upvotes - a.upvotes);
+        setSortedResults(sortedByPopular);
+        applySearch(searchInput, sortedByPopular); // Reapply search after sorting
+    };
+
+    // Apply search filter on sorted results
+    const applySearch = (searchValue, data) => {
         if (searchValue !== "") {
-            const filteredData = sortedResults.filter(item =>
-                typeof item.title === "string" &&
+            const results = data.filter(item =>
                 item.title.toLowerCase().includes(searchValue.toLowerCase())
             );
-            setFilteredResults(filteredData);
+            setFilteredResults(results);
         } else {
-            setFilteredResults(sortedResults);
+            setFilteredResults(data); // If search is empty, show all posts
         }
-    };
-
-    const sortNewest = () => {
-        sortedResults.sort((a, b) => b.created_at.localeCompare(a.created_at));
-        setSortedResults([...sortedResults]);
-    };
-
-    const sortPopular = () => {
-        sortedResults.sort((a, b) => b.upvotes - a.upvotes);
-        setSortedResults([...sortedResults]);
     };
 
     return (
@@ -65,7 +76,8 @@ const HomeFeed = (props) => {
                             className="searchBar"
                             type="text"
                             placeholder="Search posts by title..."
-                            onChange={(inputString) => searchItems(inputString.target.value)}
+                            value={searchInput}
+                            onChange={(e) => searchItems(e.target.value)}
                         />
                         <p>
                             <button className="sort" onClick={sortNewest}>Newest</button>
