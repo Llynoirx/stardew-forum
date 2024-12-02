@@ -1,3 +1,4 @@
+/* NavBar.css */
 .navbar {
   height: 5%;
   width: 100%;
@@ -5,19 +6,37 @@
   top: 0;
   left: 0;
   background-color: #218BEE;
-  padding: 15px 10px 15px 10px;
+  padding: 15px 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  z-index: 1000; /* Keeps the navbar above all other content */
 }
 
+
+/* Styling for navbar items */
 .nav-item {
-  display:flex;
+  display: flex;
   flex-direction: row;
-  right:0;
-  position:fixed;
-  margin-right:2%;
   gap: 10px;
+  margin-right: 2%; /* Adjust if needed */
 }
 
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input inside search bar */
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px; /* Adjust width as necessary */
+}

@@ -1,21 +1,38 @@
+/* HomeFeed.css */
 .HomeFeed {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-}
-
-.searchBar {
+    padding-top: 200px; /* Keeps content below the navbar */
+    padding-left: 350px; /* Adds padding to the left side */
+    padding-right: 20px; /* Optional: adds some padding to the right */
+    width: 100%; /* Ensures the container takes the full width */
+    box-sizing: border-box; /* Makes sure padding doesn't affect total width */
+  }
+  
+  .searchBar {
     color: black;
     background-color: white;
-    border: px solid black;
-    margin-top: 50px;
-    width:600px;
-}
-
-.sort {
-    margin:5px;
-    margin-bottom:0px;
+    border: 1px solid black;
+    margin-top: 20px; /* Optional: adjust margin for spacing */
+    width: 600px;
+    max-width: 100%; /* Ensure search bar doesn't overflow */
+  }
+  
+  .sort {
+    margin: 5px;
+    margin-bottom: 0px;
     background-color: #64B668;
     padding: 5px;
-}
+  }
+  
+  /* Adjusting the posts container */
+  .feed-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between posts */
+    width: 100%; /* Ensures the posts take the full width of the container */
+    max-width: 1200px; /* Optional: set a max width to prevent stretching on very large screens */
+  }
+  
