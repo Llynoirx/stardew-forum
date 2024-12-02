@@ -1,0 +1,66 @@
+/* Loading page container */
+.loading-container {
+    position: absolute; /* Absolutely position the container */
+    top: 55%; /* Move the content down slightly (adjusted from 50%) */
+    left: 50%; /* Place the left of the container in the horizontal center */
+    transform: translate(-50%, -50%); /* Offset by 50% of its width and height to perfectly center it */
+    display: flex;
+    flex-direction: column; /* Align elements vertically */
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    height: 100vh; /* Ensure it takes the full height of the viewport */
+    width: 100vw; /* Ensure it takes the full width of the viewport */
+    box-sizing: border-box; /* Include padding in total width/height */
+    text-align: center; /* Center text inside the container */
+}
+
+/* Mini container box for the loading content */
+.loading-box {
+    background-color: #4A9038; /* Green background for the box */
+    padding-bottom: 250px;
+    border-radius: 15px; /* Rounded corners */
+    padding: 30px 50px; /* Add more padding on left and right (adjusted from 50px) */
+    display: flex;
+    flex-direction: column; /* Align content vertically */
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slight shadow for effect */
+    max-width: 500px; /* Optional: Set max-width for the container */
+    width: 100%; /* Ensure it takes full width of available space */
+}
+
+/* Style the loading image */
+.loading-logo {
+    width: 300px; /* Set a specific width for the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space below the logo */
+    animation: rotate 2s infinite linear; /* Add a rotating animation */
+}
+
+/* Add animation for rotating the logo */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Style the loading text */
+.loading-text {
+    font-size: 75px; /* Increase text size */
+    font-weight: bold; /* Make the text bold */
+    color: white; /* White text for better visibility */
+    animation: fade-in 1s ease-out; /* Add fade-in animation */
+}
+
+/* Animation for fading in the text */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
