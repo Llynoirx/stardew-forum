@@ -5,14 +5,12 @@ import { supabase } from '../client';
 import LoadingPage from './LoadingPage';
 
 const EditPost = () => {
-  // Get the post id from the URL parameters
   const { id } = useParams();
   const [post, setPost] = useState({ title: '', content: '', image_url: '' });
-  const [image, setImage] = useState(null); // For storing the image selected by the user
-  const [imageUrl, setImageUrl] = useState(''); // For storing the image URL provided by the user
-  const [loading, setLoading] = useState(true); // To manage loading state while fetching the post
+  const [image, setImage] = useState(null); 
+  const [imageUrl, setImageUrl] = useState(''); 
+  const [loading, setLoading] = useState(true); 
 
-  // Fetch the post data from Supabase when the component mounts or when `id` changes
   useEffect(() => {
     const fetchPost = async () => {
       const { data, error } = await supabase
@@ -25,8 +23,8 @@ const EditPost = () => {
       if (error) {
         console.error('Error fetching post:', error.message);
       } else {
-        setPost(data); // Set the fetched post data in state
-        setLoading(false); // Stop loading once the post is fetched
+        setPost(data); 
+        setLoading(false); 
       }
     };
     fetchPost();
@@ -35,14 +33,12 @@ const EditPost = () => {
   const updatePost = async (event) => {
     event.preventDefault();
 
-    let finalImageUrl = imageUrl || post.image_url; // Use imageUrl from user input or fallback to current image URL
+    let finalImageUrl = imageUrl || post.image_url; 
 
-    // If an image is selected, upload it to Supabase Storage
     if (image) {
       const fileExtension = image.name.split('.').pop();
       const fileName = `post-images/${Date.now()}.${fileExtension}`;
 
-      // Upload the image to Supabase Storage
       const { data, error: uploadError } = await supabase.storage
         .from('posts') // Ensure this is the correct bucket name
         .upload(fileName, image);
@@ -52,66 +48,62 @@ const EditPost = () => {
         return;
       }
 
-      // Get the public URL for the uploaded image
       const { publicURL, error: urlError } = supabase.storage
         .from('posts')
         .getPublicUrl(fileName);
 
-      console.log('Public URL generated:', publicURL);  // Log the URL for debugging
+      console.log('Public URL generated:', publicURL); 
 
       if (urlError) {
         console.error('Error getting public URL:', urlError.message);
         return;
       }
 
-      finalImageUrl = publicURL; // Update the image URL with the public URL
+      finalImageUrl = publicURL; 
     }
 
-    console.log('Final imageUrl:', finalImageUrl);  // Log the final image URL
+    console.log('Final imageUrl:', finalImageUrl);  
 
-    // Update the post in the database with the new image URL (if uploaded) or the original image URL
     const { error } = await supabase
       .from('Posts')
       .update({
         title: post.title,
         content: post.content,
-        image_url: finalImageUrl, // Ensure the URL is correctly passed here
+        image_url: finalImageUrl, 
       })
       .eq('id', id);
 
     if (error) {
       console.error('Error updating post:', error.message);
     } else {
-      window.location = '/'; // Redirect to home after updating the post
+      window.location = '/'; 
     }
   };
 
-  // Function to delete the post
   const deletePost = async (event) => {
     event.preventDefault();
 
     const { error } = await supabase
       .from('Posts')
       .delete()
-      .eq('id', id); // Delete the post by its `id`
+      .eq('id', id); 
 
     if (error) {
       console.error('Error deleting post:', error.message);
     } else {
-      window.location = '/'; // Redirect to home page after successfully deleting the post
+      window.location = '/'; 
     }
   };
 
-  // Handle changes to the form fields (title and content)
   const handleChange = (event) => {
     const { name, value } = event.target;
     setPost((prev) => ({
       ...prev,
-      [name]: value, // Update the corresponding field in the `post` state
+      [name]: value, 
     }));
   };
 
-  // Handle changes to the image input
+  
   const handleImageChange = (event) => {
     setImage(event.target.files[0]); // Update the `image` state with the selected file
   };
