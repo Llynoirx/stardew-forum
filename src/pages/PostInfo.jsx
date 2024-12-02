@@ -13,6 +13,7 @@ const PostInfo = (props) => {
     const [count, setCount] = useState(0);
     const [newComments, setComments] = useState([]); // Ensure comments are initialized as an array
     const [showPrompt, setShowPrompt] = useState(true);
+    const [loading, setLoading] = useState(true); // State to manage loading
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -26,7 +27,13 @@ const PostInfo = (props) => {
             setPosts(data);
             setCount(data.upvotes);
             setComments(Array.isArray(data.comments) ? data.comments : []);  // Ensure comments are an array
+
+            // Set a timeout to simulate loading delay (e.g., 3 seconds)
+            setTimeout(() => {
+                setLoading(false); // Hide loading screen after 3 seconds
+            }, 1500); // Adjust the time as needed (3000ms = 3 seconds)
         };
+
         fetchPost();
     }, [id]);
 
@@ -82,7 +89,9 @@ const PostInfo = (props) => {
 
     return (
         <div>
-            {posts && posts.id != null ? (
+            {loading ? (
+                <LoadingPage /> // Show the loading screen if still loading
+            ) : (
                 <div className="postSection">
                     <Link to={'../edit/' + posts.id}>
                         <img className="moreButton" alt="edit button" src={more} />
@@ -132,8 +141,6 @@ const PostInfo = (props) => {
                         <button className="back">Go Back</button>
                     </Link>
                 </div>
-            ) : (
-                <h3><LoadingPage /></h3>
             )}
         </div>
     );
