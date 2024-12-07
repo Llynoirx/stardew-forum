@@ -1,16 +1,16 @@
-/* Center the post section */
+/* Styles the main post section container, including size, centering, padding, and background appearance */
 .postSection {
     border: 2px solid #B76C42;
     background-color: #F5D59B;
     border-radius: 30px;
     padding: 15px;
     margin-top: 40px;
-    width: 800px;          /* Adjust the width as per your preference */
-    margin-left: auto;     /* Center horizontally */
-    margin-right: auto;    /* Center horizontally */
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Comment section styling */
+/* Defines the appearance of the comment section with padding, color, and rounded edges */
 .commentSection {
     background-color: #B76C42;
     padding: 15px;
@@ -19,7 +19,7 @@
     border-radius: 5px;
 }
 
-/* Comment input field styling */
+/* Sets up the style for the input field used to add comments */
 .commentInput {
     background-color: white;
     border-radius: 5px;
@@ -28,7 +28,7 @@
     font-size: 15px;
 }
 
-/* List styling for comments */
+/* Configures list items and aligns the content with a custom bullet style */
 ul li {
     text-align: left;
     list-style: "- ";
@@ -39,7 +39,7 @@ ul {
     padding-left: 3%;
 }
 
-/* Upvote button styling */
+/* Adds interactive behavior and appearance to upvote icons */
 .upvote-icon {
     width: 20px;
     height: 20px;
@@ -56,7 +56,7 @@ ul {
     transform: scale(0.8);
 }
 
-/* Likes container styling */
+/* Styles the likes section, aligning elements in a row with proper spacing */
 .likes {
     display: flex;
     flex-direction: row;
@@ -64,23 +64,23 @@ ul {
     justify-content: space-between;
 }
 
-/* Heading style */
+/* Defines styling for section headings */
 h4 {
     margin: 0;
 }
 
-/* Back button styling */
+/* Sets the color for the back button */
 .back {
     background-color: #4A9038;
 }
 
-/* Content styling to preserve line breaks */
+/* Ensures content formatting preserves line breaks and wraps text properly */
 .content {
-    white-space: pre-wrap; /* Ensure white-space formatting is preserved */
-    word-wrap: break-word; /* Allow content to break at word boundaries */
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
-/* Add overall padding to the page for spacing */
+/* Adds padding to the body for proper spacing on wider screens */
 body {
-    padding: 0 22%; /* Add padding to the left and right of the body for wider screens */
+    padding: 0 22%;
 }

@@ -1,8 +1,10 @@
+/* Functional component rendering the loading screen w/ 
+text and an animated gif */
+
 import React from 'react';
 import junimo from '../assets/junimo-dance.gif'; 
 import './LoadingPage.css'; 
 
-// Functional component rendering the loading screen with text and an animated gif
 const LoadingPage = () => {
     return (
         <div className="loading-container">

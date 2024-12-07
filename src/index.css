@@ -1,10 +1,11 @@
 :root {
+  /* Set default font family, line height, and other typography settings */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
   color: black;
-  background-color: #124682; /* Fallback background color */
+  background-color: #124682;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -12,34 +13,38 @@
 }
 
 a {
+  /* Style links with a specific font weight and color */
   font-weight: 500;
   color: white;
   text-decoration: inherit;
 }
 a:hover {
+  /* Add hover effect to links with color change and custom cursor */
   color: #3d4eff;
   cursor: url('./assets/pbcurscolor.png'), auto;
 }
 
 body {
+  /* Style the body with a background image and set layout properties */
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  /* Set the background image */
-  background-image: url('./assets/background.png'); /* Replace with your image path */
-  background-size: cover; /* Ensures the image covers the entire screen */
-  background-position: center center; /* Centers the image */
-  background-attachment: fixed; /* Keeps the background fixed when scrolling */
+  background-image: url('./assets/background.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 h1 {
+  /* Style the main heading with size and line height */
   font-size: 3.2em;
   line-height: 1.1;
 }
 
 button {
+  /* Style buttons with rounded corners, padding, background, and cursor */
   border-radius: 8px;
   border: 2px solid transparent;
   padding: 0.6em 1.2em;
@@ -52,24 +57,13 @@ button {
 }
 
 button:hover {
+  /* Add hover effect to buttons with color change and custom cursor */
   border-color: #3d4eff;
   cursor: url('./assets/pbcurscolor.png'), auto;
 }
 
 button:focus,
 button:focus-visible {
+  /* Focus effect for buttons to improve accessibility */
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
