@@ -1,52 +1,16 @@
+/* General input styling */
 input {
-    margin-top: 10px;
-    width: 100%;
-    height: 45px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    font-size: 20px;
-    padding-left: 10px;
+  margin-top: 10px;
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 20px;
+  padding-left: 10px;
 }
 
+/* Styling for submit button */
 input[type=submit] {
-    width: 60%;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #4A9038;
-    color: white;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    margin-top: 20px;
-  }
-
-input[type=submit]:hover {
-    border: 2px solid #646cff;
-}
-
-.deleteButton {
-    width: 60%;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #870404;
-    color:white;
-    cursor: pointer;
-    transition: border-color 0.25s;
-    margin-top: 20px;
-}
-
-.deleteButton:hover {
-  border: 2px solid #646cff;
-}
-
-.cancelButton {
   width: 60%;
   height: 50px;
   cursor: pointer;
@@ -54,31 +18,72 @@ input[type=submit]:hover {
   font-size: 20px;
   font-weight: 500;
   font-family: inherit;
-  background-color: #AAAAAA;
-  color:white;
-  cursor: pointer;
+  background-color: #4A9038;
+  color: white;
   transition: border-color 0.25s;
   margin-top: 20px;
-  /* margin-bottom: 30px; */
 }
 
+/* Submit button hover effect */
+input[type=submit]:hover {
+  border: 2px solid #646cff;
+}
+
+/* Styling for delete button */
+.deleteButton {
+  width: 60%;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #870404;
+  color:white;
+  transition: border-color 0.25s;
+  margin-top: 20px;
+}
+
+/* Delete button hover effect */
+.deleteButton:hover {
+border: 2px solid #646cff;
+}
+
+/* Styling for cancel button */
+.cancelButton {
+width: 60%;
+height: 50px;
+cursor: pointer;
+border-radius: 8px;
+font-size: 20px;
+font-weight: 500;
+font-family: inherit;
+background-color: #AAAAAA;
+color:white;
+transition: border-color 0.25s;
+margin-top: 20px;
+}
+
+/* Cancel button hover effect */
 .cancelButton:hover {
 border: 2px solid #646cff;
 }
 
+/* Styling for content text area */
 .contentText {
-  border: 1px solid black;
-  border-radius: 8px;
-  width: 500px;
-  font-family: inherit;
-  padding: 5px;
+border: 1px solid black;
+border-radius: 8px;
+width: 500px;
+font-family: inherit;
+padding: 5px;
 }
 
+/* Styling for title input field */
 .titleText {
-  font-weight: bold;
-  margin-top: 50px;
-  border: 1px solid black;
-  border-radius: 8px;
-  padding: 5px;
-  width: 500px;
+font-weight: bold;
+margin-top: 50px;
+border: 1px solid black;
+border-radius: 8px;
+padding: 5px;
+width: 500px;
 }

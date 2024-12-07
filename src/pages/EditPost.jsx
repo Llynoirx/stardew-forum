@@ -7,24 +7,26 @@ import LoadingPage from './LoadingPage';
 
 const EditPost = ({props}) => {
 
+    // Extract post ID from URL parameters
     const {id} = useParams();
     const [post, setPosts] = useState([]);
 
+    // Fetch the post data from the database on component mount
     useEffect(() => {
         const fetchPost = async (event) => {
-
             const {data} = await supabase
                 .from('Posts')
                 .select('id, title, content')
                 .eq('id', id)
                 .limit(1)
                 .single()
-                setPosts(data);
+            setPosts(data);
         }
         fetchPost()
         console.log(post)
     }, [props]);
 
+    // Update the post content in the database
     const updatePost = async (event) => {
         event.preventDefault();
 
@@ -36,6 +38,7 @@ const EditPost = ({props}) => {
         window.location = "/";
     }
 
+    // Delete the post from the database
     const deletePost = async (event) => {
         event.preventDefault();
 
@@ -47,6 +50,7 @@ const EditPost = ({props}) => {
         window.location = "http://localhost:5173/";
     }
 
+    // Handle input field changes to update state
     const handleChange = (event) => {
         const {name, value} = event.target;
         setPosts( (prev) => {
@@ -57,6 +61,7 @@ const EditPost = ({props}) => {
         })
     }
 
+    // Render the form or loading page based on whether post data is available
     return (
         <div>
             { post && post.id != null ?
