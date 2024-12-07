@@ -1,3 +1,4 @@
+/* Styles for the input field to ensure it has a consistent appearance */
 input {
     margin-top: 10px;
     width: 100%;
@@ -8,10 +9,7 @@ input {
     padding-left: 10px;
 }
 
-label {
-    font-size: 10px;
-}
-
+/* Submit button styling with a full width, color, and hover effect */
 input[type=submit] {
     width: 100%;
     height: 50px;
@@ -23,15 +21,16 @@ input[type=submit] {
     font-family: inherit;
     background-color: #1a1a1a;
     color:white;
-    cursor: pointer;
     transition: border-color 0.25s;
     margin-top: 20px;
-  }
+}
 
+/* Hover effect for submit button */
 input[type=submit]:hover {
     border-color: #646cff;
 }
 
+/* Cancel button styling, with width, height, and background color */
 .cancelButton {
     width: 60%;
     height: 50px;
@@ -42,12 +41,12 @@ input[type=submit]:hover {
     font-family: inherit;
     background-color: #AAAAAA;
     color:white;
-    cursor: pointer;
     transition: border-color 0.25s;
     margin-top: 20px;
     margin-bottom: 50px;
 }
 
+/* Hover effect for cancel button */
 .cancelButton:hover {
   border: 2px solid #646cff;
 }
