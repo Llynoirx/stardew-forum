@@ -1,43 +1,43 @@
-/* Loading page container */
+/* Styles for the loading page container, centering the content both vertically and horizontally */
 .loading-container {
-    position: absolute; /* Absolutely position the container */
-    top: 55%; /* Move the content down slightly (adjusted from 50%) */
-    left: 50%; /* Place the left of the container in the horizontal center */
-    transform: translate(-50%, -50%); /* Offset by 50% of its width and height to perfectly center it */
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column; /* Align elements vertically */
-    justify-content: center; /* Vertically center the content */
-    align-items: center; /* Horizontally center the content */
-    height: 100vh; /* Ensure it takes the full height of the viewport */
-    width: 100vw; /* Ensure it takes the full width of the viewport */
-    box-sizing: border-box; /* Include padding in total width/height */
-    text-align: center; /* Center text inside the container */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-/* Mini container box for the loading content */
+/* Styles for the loading box, defining its background, padding, and alignment */
 .loading-box {
-    background-color: #4A9038; /* Green background for the box */
+    background-color: #4A9038;
     padding-bottom: 250px;
-    border-radius: 15px; /* Rounded corners */
-    padding: 30px 50px; /* Add more padding on left and right (adjusted from 50px) */
+    border-radius: 15px;
+    padding: 30px 50px;
     display: flex;
-    flex-direction: column; /* Align content vertically */
-    justify-content: center; /* Vertically center the content */
-    align-items: center; /* Horizontally center the content */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slight shadow for effect */
-    max-width: 500px; /* Optional: Set max-width for the container */
-    width: 100%; /* Ensure it takes full width of available space */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
 }
 
-/* Style the loading image */
+/* Styles for the junimo logo within the loading page, including its size and rotation animation */
 .loading-logo {
-    width: 300px; /* Set a specific width for the image */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 20px; /* Space below the logo */
-    animation: rotate 2s infinite linear; /* Add a rotating animation */
+    width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+    animation: rotate 2s infinite linear;
 }
 
-/* Add animation for rotating the logo */
+/* Keyframes defining the rotation animation */
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -47,15 +47,15 @@
     }
 }
 
-/* Style the loading text */
+/* Styles for the loading text, including its size, color, and fade-in animation */
 .loading-text {
-    font-size: 75px; /* Increase text size */
-    font-weight: bold; /* Make the text bold */
-    color: white; /* White text for better visibility */
-    animation: fade-in 1s ease-out; /* Add fade-in animation */
+    font-size: 75px;
+    font-weight: bold;
+    color: white;
+    animation: fade-in 1s ease-out;
 }
 
-/* Animation for fading in the text */
+/* Keyframes defining the fade-in animation for the text */
 @keyframes fade-in {
     0% {
         opacity: 0;
