@@ -5,6 +5,7 @@ import stardewlogo from '../assets/stardew-logo.png'
 
 const Navbar = () => {
 
+    /* Stardew Valley Logo on top left; Link to Home, Create Post on top right */
     return (
         <div className="navbar">
             <img src={stardewlogo} height="100px"/>
