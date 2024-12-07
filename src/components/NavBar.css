@@ -1,4 +1,7 @@
-/* NavBar.css */
+/* Styling for NavBar and its components */
+
+/* Define layout and appearance of fixed navigation bar at top of pg
+   Ensure it stays visible while scrolling, w/ flexible layout for alignment. */
 .navbar {
   height: 5%;
   width: 100%;
@@ -11,18 +14,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  z-index: 1000; /* Keeps the navbar above all other content */
+  z-index: 1000; 
 }
 
-
-/* Styling for navbar items */
+/* Adjusts layout of individual items within navbar, 
+   ensuring that they are spaced out evenly */
 .nav-item {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  margin-right: 2%; /* Adjust if needed */
+  margin-right: 2%; 
 }
 
+/*  Sets up layout, background, and styling for search bar 
+    inside the navbar, including rounded corners and shadow for a clean look. */
 .search-bar {
   display: flex;
   align-items: center;
@@ -33,10 +38,11 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Input inside search bar */
+/*  Defines the appearance of the input field within the search bar, w/ 
+    padding, borders, and fixed width for consistency */
 .search-bar input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 200px; /* Adjust width as necessary */
+  width: 200px;
 }

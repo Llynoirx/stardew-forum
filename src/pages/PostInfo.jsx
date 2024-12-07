@@ -11,9 +11,9 @@ const PostInfo = (props) => {
     const [posts, setPosts] = useState([]);
     const { id } = useParams();
     const [count, setCount] = useState(0);
-    const [newComments, setComments] = useState([]); // Ensure comments are initialized as an array
+    const [newComments, setComments] = useState([]); 
     const [showPrompt, setShowPrompt] = useState(true);
-    const [loading, setLoading] = useState(true); // State to manage loading
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -26,12 +26,12 @@ const PostInfo = (props) => {
 
             setPosts(data);
             setCount(data.upvotes);
-            setComments(Array.isArray(data.comments) ? data.comments : []);  // Ensure comments are an array
+            setComments(Array.isArray(data.comments) ? data.comments : []);  
 
-            // Set a timeout to simulate loading delay (e.g., 3 seconds)
+          
             setTimeout(() => {
-                setLoading(false); // Hide loading screen after 3 seconds
-            }, 1500); // Adjust the time as needed (3000ms = 3 seconds)
+                setLoading(false); 
+            }, 1500); 
         };
 
         fetchPost();
@@ -49,7 +49,6 @@ const PostInfo = (props) => {
     };
 
     const addComment = async (newCom) => {
-        // Add new comment only if it's a valid string
         if (newCom.trim()) {
             const updatedComments = [...newComments, newCom];
             setComments(updatedComments);
@@ -76,7 +75,6 @@ const PostInfo = (props) => {
     const currentTime = new Date();
     const diffHours = Math.round((currentTime - timestamp) / (1000 * 60 * 60));
 
-    // Helper function to render content with line breaks
     const renderContentWithLineBreaks = (content) => {
         if (!content) return null;
         return content.split('\n').map((str, index) => (
@@ -90,7 +88,7 @@ const PostInfo = (props) => {
     return (
         <div>
             {loading ? (
-                <LoadingPage /> // Show the loading screen if still loading
+                <LoadingPage /> 
             ) : (
                 <div className="postSection">
                     <Link to={'../edit/' + posts.id}>
@@ -98,7 +96,7 @@ const PostInfo = (props) => {
                     </Link>
                     <h2>{posts.title}</h2>
                     <div className="content">
-                        {renderContentWithLineBreaks(posts.content)} {/* Display content with line breaks */}
+                        {renderContentWithLineBreaks(posts.content)} 
                     </div>
                     <div className="likes">
                         <p>Posted {diffHours} hours ago</p>

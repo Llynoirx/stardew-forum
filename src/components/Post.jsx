@@ -18,7 +18,6 @@ const Post = (props) => {
         </Link>
       </div>
 
-      {/* Wrap entire post content inside a Link to navigate to the post detail page */}
       <Link to={'post/' + props.id} className="postLink">
         <h2 className="name">{props.title}</h2>
         <div className="content">{props.content}</div>
