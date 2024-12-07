@@ -1,15 +1,15 @@
-/* HomeFeed.css */
+/* Container for the home feed */
 .HomeFeed {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto; /* Centers the content horizontally */
-  padding-top: 150px; /* Keeps content below the navbar */
-  width: 100%; /* Ensures the container takes the full width */
-  box-sizing: border-box; /* Makes sure padding doesn't affect total width */
+  margin: auto; 
+  padding-top: 150px; 
+  width: 100%; 
+  box-sizing: border-box; 
 }
 
-/* Search bar styling */
+/* Styles for the search bar */
 .searchBar {
   color: black;
   background-color: white;
@@ -19,7 +19,7 @@
   max-width: 100%; /* Ensure search bar doesn't overflow */
 }
 
-/* Sort button styling */
+/* Styling for the sort button */
 .sort {
   margin: 5px;
   margin-bottom: 0px;
@@ -27,25 +27,27 @@
   padding: 5px;
 }
 
-/* Feed posts container styling */
+/* Layout for the posts feed */
 .feed-posts {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Space between posts */
-  width: 100%; /* Ensures the posts take the full width of the container */
-  max-width: 1200px; /* Optional: set a max width to prevent stretching on very large screens */
+  gap: 20px; 
+  width: 100%; 
+  max-width: 1200px; 
 }
 
-/* Media query to center content and add padding on screens >= 1280px */
+/* Adjustments for screens larger than 1280px */
 @media (min-width: 1280px) {
+  
+  /* Modify the layout of HomeFeed container */
   .HomeFeed {
-      padding-left: 50px;  /* Adds padding to the left side */
-      padding-right: 200px; /* Adds padding to the right side */
-      max-width: 1280px;    /* Optional: Set a max width for the entire container */
+    padding-left: 50px;  
+    padding-right: 200px; 
+    max-width: 1280px;   
   }
 
-  /* Optionally, adjust the max-width of the feed-posts container if you want more control */
+  /* Ensure feed-posts container behaves responsively */
   .feed-posts {
-      max-width: 100%; /* Ensures posts container takes full width within .HomeFeed */
+    max-width: 100%; 
   }
 }

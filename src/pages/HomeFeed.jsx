@@ -5,6 +5,7 @@ import LoadingPage from './LoadingPage';
 import './HomeFeed.css';
 
 const HomeFeed = (props) => {
+    // State initialization for posts, search, filtered/sorted results, and loading
     const [posts, setPosts] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     const [filteredResults, setFilteredResults] = useState([]);
@@ -12,6 +13,7 @@ const HomeFeed = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        // Fetch posts from the database and set them to state
         const fetchPosts = async () => {
             const { data } = await supabase
                 .from('Posts')
@@ -22,15 +24,16 @@ const HomeFeed = (props) => {
             setSortedResults(data);
             setFilteredResults(data);
 
+            // Have loading screen run for 1.5 seconds
             setTimeout(() => {
-                setLoading(false); // Hide the loading screen after 3-5 seconds
-            }, 1500); // Set the desired delay (1500ms)
+                setLoading(false); 
+            }, 1500);
         };
 
         fetchPosts();
     }, []);
 
-    // Function to handle search
+    // Function to handle search input change
     const searchItems = (searchValue) => {
         setSearchInput(searchValue);
         const results = sortedResults.filter(item =>
@@ -39,21 +42,21 @@ const HomeFeed = (props) => {
         setFilteredResults(results);
     };
 
-    // Sort by Newest
+    // Function to sort posts by newest
     const sortNewest = () => {
         const sortedByNewest = [...posts].sort((a, b) => b.created_at.localeCompare(a.created_at));
         setSortedResults(sortedByNewest);
-        applySearch(searchInput, sortedByNewest); // Reapply search after sorting
+        applySearch(searchInput, sortedByNewest); 
     };
 
-    // Sort by Popularity (upvotes)
+    // Function to sort posts by popularity (upvotes)
     const sortPopular = () => {
         const sortedByPopular = [...posts].sort((a, b) => b.upvotes - a.upvotes);
         setSortedResults(sortedByPopular);
-        applySearch(searchInput, sortedByPopular); // Reapply search after sorting
+        applySearch(searchInput, sortedByPopular); 
     };
 
-    // Apply search filter on sorted results
+    // Function to apply search filter on sorted posts
     const applySearch = (searchValue, data) => {
         if (searchValue !== "") {
             const results = data.filter(item =>
@@ -67,11 +70,13 @@ const HomeFeed = (props) => {
 
     return (
         <div className="HomeFeed">
+            {/* Conditionally render loading screen or posts based on loading state */}
             {loading ? (
                 <LoadingPage />
             ) : (
                 <>
                     <div>
+                        {/* Search bar input */}
                         <input
                             className="searchBar"
                             type="text"
@@ -79,11 +84,13 @@ const HomeFeed = (props) => {
                             value={searchInput}
                             onChange={(e) => searchItems(e.target.value)}
                         />
+                        {/* Buttons to sort posts */}
                         <p>
                             <button className="sort" onClick={sortNewest}>Newest</button>
                             <button className="sort" onClick={sortPopular}>Most Popular</button>
                         </p>
                     </div>
+                    {/* Map over filtered posts and display each */}
                     {filteredResults.length > 0 ? (
                         filteredResults.map((post) => (
                             <Post
